@@ -71,7 +71,7 @@ namespace tvMaster.Dialogs
             String url = "";
             if (imdb == null)
             {
-                url = "https://www.taxprofessionals.com/images/NoImageAvailable.png";
+                url = "https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png";
             }
             else
             {
@@ -115,7 +115,6 @@ namespace tvMaster.Dialogs
                 using (var client = new HttpClient { BaseAddress = new Uri("https://api.trakt.tv/") })
                 {
                     client.DefaultRequestHeaders.TryAddWithoutValidation("trakt-api-version", "2");
-
                     client.DefaultRequestHeaders.TryAddWithoutValidation("trakt-api-key", "468a92c26d3411be7886881b7f40afea47288963a91d9c5a0f43257521ceab74");
 
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("trakt-api-version", "2");
@@ -126,11 +125,18 @@ namespace tvMaster.Dialogs
 
                         var responseJSON = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ShowsImages>>(responseString);
 
-                        url = responseJSON[0].show.images.fanart.full;
+                        
+                        if (responseJSON[0].show.images.fanart.full == null)
+                        {
+                            url = "https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png";
+                        }
+                        else
+                        {
+                                url = responseJSON[0].show.images.fanart.full;
+                        }
                     }
                 }
             }
-
             return url;
         }
         //path generater for shows
@@ -204,7 +210,7 @@ namespace tvMaster.Dialogs
                     for (int i = 0; i < responseJSON.Count; i++)
                     {
                         String k = responseJSON[i].show.ids.imdb;
-                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLink(responseJSON[i].show.ids.slug) + ")";
+                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLinkShows(responseJSON[i].show.ids.slug) + ")";
                         showsResultList += $"{Environment.NewLine}{Environment.NewLine}" + (i + 1) + ")" + responseJSON[i].show.title + $"{Environment.NewLine}{Environment.NewLine}" + image + $"{Environment.NewLine}{Environment.NewLine} > year: " + responseJSON[i].show.year;
                     }
                 }
