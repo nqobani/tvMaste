@@ -563,7 +563,7 @@ namespace tvMaster.Dialogs
                                     count++;
                                     if ((responseJSON[i].show.title.ToLower().ToString().Contains(result.Query.ToLower().ToString()) || result.Query.ToLower().ToString().Contains(responseJSON[i].show.title.ToLower().ToString())) || (count + "").Equals(result.Query.ToString()))
                                     {
-                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLink(responseJSON[i].show.ids.slug) + ")";
+                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLinkShows(responseJSON[i].show.ids.slug) + ")";
                                         output += $"{Environment.NewLine}{Environment.NewLine} ###" + count + ")" + responseJSON[i].show.title + $"{Environment.NewLine}{Environment.NewLine}" + image + $"{Environment.NewLine}{Environment.NewLine} > year: " + responseJSON[i].show.year + $"{Environment.NewLine}{Environment.NewLine} > watchers " + responseJSON[i].watchers + $"{Environment.NewLine}{Environment.NewLine}" + getShowsComments(responseJSON[i].show.ids.slug.ToString());
                                     }
                                 }
@@ -599,7 +599,7 @@ namespace tvMaster.Dialogs
                                     count++;
                                     if ((responseJSON[i].title.ToLower().ToString().Contains(result.Query.ToLower().ToString()) || result.Query.ToLower().ToString().Contains(responseJSON[i].title.ToLower().ToString())) || (count + "").Equals(result.Query.ToString()))
                                     {
-                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].ids.imdb) + ")](" + redirectLink(responseJSON[i].ids.slug) + ")";
+                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].ids.imdb) + ")](" + redirectLinkShows(responseJSON[i].ids.slug) + ")";
                                         output += $"{Environment.NewLine}{Environment.NewLine} ### " + count + ")" + responseJSON[i].title + $"{Environment.NewLine}{Environment.NewLine}" + image + $"{Environment.NewLine}{Environment.NewLine} > year: " + responseJSON[i].year + getShowsComments(responseJSON[i].ids.slug.ToString());
                                     }
                                 }
@@ -634,7 +634,7 @@ namespace tvMaster.Dialogs
                                     count++;
                                     if ((responseJSON[i].show.title.ToLower().ToString().Contains(result.Query.ToLower().ToString()) || result.Query.ToLower().ToString().Contains(responseJSON[i].show.title.ToLower().ToString())) || (count + "").Equals(result.Query.ToString()))
                                     {
-                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLink(responseJSON[i].show.ids.slug) + ")";
+                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLinkShows(responseJSON[i].show.ids.slug) + ")";
                                         output += $"{Environment.NewLine}{Environment.NewLine} ### " + count + ")" + responseJSON[i].show.title + $"{Environment.NewLine}{Environment.NewLine}" + image + $"{Environment.NewLine}{Environment.NewLine} > year: " + responseJSON[i].show.year + $"{Environment.NewLine}{Environment.NewLine} > number of lists: " + responseJSON[i].list_count + getShowsComments(responseJSON[i].show.ids.slug.ToString());
                                     }
                                 }
@@ -669,7 +669,7 @@ namespace tvMaster.Dialogs
                                     count++;
                                     if ((responseJSON[i].show.title.ToLower().ToString().Contains(result.Query.ToLower().ToString()) || result.Query.ToLower().ToString().Contains(responseJSON[i].show.title.ToLower().ToString())) || (count + "").Equals(result.Query.ToString()))
                                     {
-                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLink(responseJSON[i].show.ids.slug) + ")";
+                                        String image = $"[![watch trailer and find more info](" + getImageUrlShows(responseJSON[i].show.ids.imdb) + ")](" + redirectLinkShows(responseJSON[i].show.ids.slug) + ")";
                                         output += $"{Environment.NewLine}{Environment.NewLine} ###" + count + ")" + responseJSON[i].show.title + $"{Environment.NewLine}{Environment.NewLine}" + image + $"{Environment.NewLine}{Environment.NewLine} > year: " + responseJSON[i].show.year + $"{Environment.NewLine}{Environment.NewLine} > Play count: " + responseJSON[i].play_count + getShowsComments(responseJSON[i].show.ids.slug.ToString());
                                     }
                                 }
